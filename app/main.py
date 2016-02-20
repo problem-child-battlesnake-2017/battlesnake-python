@@ -1,14 +1,20 @@
 import bottle
 import os
 import heatMap as heat
+import pathing
 
 
 
 global heatMap
+global snakeId
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
 
+def getSnakePosition(data):
+    snakes = data['snakes']
+    ourSnake = snakes[snakeId]
+    return ourSnake['coords'][0]
 
 @bottle.get('/')
 def index():
@@ -25,8 +31,11 @@ def index():
 
 @bottle.post('/start')
 def start():
-    heatMap = heat.heatMap()
     data = bottle.request.json
+    height = data["height"]
+    width = data["width"]
+    heatMap = heat.heatMap(width, height)
+    snakeId = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
 
     # TODO: Do things with data
 
@@ -40,12 +49,12 @@ def move():
     data = bottle.request.json
     goal = heatMap.getGoal()
     board = heatMap.getHeatMap(data)
+    position = getSnakePosition(data)
 
-    # TODO: Do things with data
-    # call dikstras with goal and board
+    direction = pathing.find_path_direction(board, board.width, board.height, position, goal)
 
     return {
-        'move': 'north',
+        'move': direction,
         'taunt': 'battlesnake-python!'
     }
 
