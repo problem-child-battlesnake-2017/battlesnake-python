@@ -57,6 +57,51 @@ def find_path(grid, width, height, start, end):
 		point = next
 	
 	return None
+	
+def find_best_adjacent(grid, width, height, u):
+	best_value = None
+	best_dir = 'north'
+
+	if u[0] > 0:
+		val = grid[u[0] - 1, u[1]]
+		if best_value is None or (val is not None and val < best_value):
+			best_value = val
+			best_dir = 'east'
+		
+	if u[0] < width - 1:
+		val = grid[u[0] + 1, u[1]]
+		if best_value is None or (val is not None and val < best_value):
+			best_value = val
+			best_dir = 'west'
+		
+	if u[1] > 0:
+		val = grid[u[0], u[1] - 1]
+		if best_value is None or (val is not None and val < best_value):
+			best_value = val
+			best_dir = 'north'
+		
+	if u[1] < height - 1:
+		val = grid[u[0], u[1] + 1]
+		if best_value is None or (val is not None and val < best_value):
+			best_value = val
+			best_dir = 'south'
+			
+	return best_dir
+	
+def find_path_direction(grid, width, height, start, end):
+	next_point = find_path(grid, width, height, start, end)
+	
+	if next_point is None:
+		return find_best_adjacent(grid, width, height, start)
+	
+	if next_point[0] > start[0]:
+		return 'east'
+	if next_point[0] < start[0]:
+		return 'west'
+	if next_point[1] < start[1]:
+		return 'north'
+	if next_point[1] > start[1]:
+		return 'south'
 
 def find_paths(grid, width, height, start):
 	dist = make_grid(width, height, None)
@@ -91,7 +136,7 @@ def find_paths(grid, width, height, start):
 			
 	return prev
 	
-# g = make_grid(10, 10, 1)
-# g[0][1] = None
-# g[1][0] = 5
-# print find_path(g, 10, 10, [0,0], [2,2])
+g = make_grid(10, 10, 1)
+g[0][1] = None
+g[1][0] = 5
+print find_path_direction(g, 10, 10, [0,0], [2,2])
