@@ -1,7 +1,10 @@
 import bottle
 import os
+import heatMap as heat
 
 
+
+global heatMap
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
@@ -22,6 +25,7 @@ def index():
 
 @bottle.post('/start')
 def start():
+    heatMap = heat.heatMap()
     data = bottle.request.json
 
     # TODO: Do things with data
@@ -34,8 +38,11 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
+    goal = heatMap.getGoal()
+    board = heatMap.getHeatMap(data)
 
     # TODO: Do things with data
+    # call dikstras with goal and board
 
     return {
         'move': 'north',
