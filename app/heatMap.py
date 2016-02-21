@@ -24,6 +24,11 @@ class heatMap:
         for point in coordinates:
             xx = point[0]
             yy = point[1]
+            if xx < 0 or xx >= self.width:
+                continue
+            if yy < 0 or yy >= self.height:
+                continue
+
             if (self.board[xx][yy]) != None:
                         self.board[xx][yy] += radiusAmount
         if radius > 0:
