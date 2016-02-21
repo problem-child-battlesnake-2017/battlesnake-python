@@ -49,5 +49,5 @@ class heatMap:
         return self.goal
 
     def getHeatMap(self, data):
-        self.fillHeatMap(self, data)
+        self.fillHeatMap(data)
         return self.board

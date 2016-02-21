@@ -50,7 +50,6 @@ def start():
 def move():
     data = bottle.request.json
 
-    global ourHeatMap
     goal = ourHeatMap.getGoal()
     board = ourHeatMap.getHeatMap(data)
     position = getSnakePosition(data)
