@@ -56,6 +56,9 @@ def move():
     position = getSnakePosition(data)
 
     direction = pathing.find_path_direction(board, board.width, board.height, position, goal)
+    print board
+    print position
+    print goal
     print direction
 
     return {

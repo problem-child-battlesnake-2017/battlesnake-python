@@ -47,7 +47,6 @@ def analyze_point(original, point, grid, dist, prev):
 def find_path(grid, width, height, start, end):
     prev = find_paths(grid, width, height, start)
 
-    # print(end)
     last_point = None
     point = end
     while not point is None:
@@ -55,7 +54,6 @@ def find_path(grid, width, height, start, end):
             return last_point
 
         next = prev[point[0]][point[1]]
-        # print( next )
         last_point = point
         point = next
 
