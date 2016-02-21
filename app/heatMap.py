@@ -42,7 +42,7 @@ class heatMap:
 
     def fillFood(self, data):
         for food in data:
-            self.board[food[0]][food[1]] = 1
+            self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], 1)
 
     def findSmallestCoordinate(self):
         min = 10000
