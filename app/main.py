@@ -2,6 +2,7 @@ import bottle
 import os
 import heatMap
 import pathing
+import random
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -50,12 +51,18 @@ def start():
     # TODO: Do things with data
 
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': ""
     }
 
 
 @bottle.post('/move')
 def move():
+
+    taunts = [
+        'That\'s not a good to get a head',
+
+    ]
+
     data = bottle.request.json
 
     height = data["height"]
@@ -75,7 +82,7 @@ def move():
 
     return {
         'move': direction,
-        'taunt': 'battlesnake-python!'
+        'taunt': random.choice(taunts)
     }
 
 
