@@ -5,7 +5,7 @@ class heatMap:
         self.aroundSnake = 5
         self.width = width
         self.height = height
-        self.board = [[1 for x in range(self.width)] for x in range(self.height)]
+        self.board = [[2 for x in range(self.width)] for x in range(self.height)]
 
     def fillSnakes(self, data):
         for snake in data:
@@ -30,28 +30,34 @@ class heatMap:
                 continue
 
             if (self.board[xx][yy]) != None:
-                        self.board[xx][yy] += radiusAmount
+                        self.board[xx][yy] = radiusAmount
         if radius > 0:
             for point in coordinates:
                 self.fillRadius(point[0], point[1], radius, radiusAmount)
 
 
-
-    def fillBorder(self):
-        for i in range(0, self.width):
-            self.board[i][0] = None
-            self.board[i][self.height-1] = None
-        for i in range(0, self.height):
-            self.board[0][i] = None
-            self.board[self.width-1][i] = None
-
-
     def fillHeatMap(self, data):
         self.fillSnakes(data['snakes'])
-        #self.fillBorder()
+        self.fillFood(data['food'])
+
+    def fillFood(self, data):
+        for food in data:
+            self.board[food[0]][food[1]] = 1
+
+    def findSmallestCoordinate(self):
+        min = 10000
+        x = None
+        y = None
+        for i in range(0,self.width):
+            for j in range(0,self.height):
+                if self.board[i][j] < min:
+                    min = self.board[i][j]
+                    x = i
+                    y = j
+        return [x,y]
 
     def getGoal(self):
-        return self.goal
+        return self.findSmallestCoordinate()
 
     def getHeatMap(self, data):
         self.fillHeatMap(data)
