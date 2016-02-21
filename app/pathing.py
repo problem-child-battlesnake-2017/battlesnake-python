@@ -65,25 +65,25 @@ def find_best_adjacent(grid, width, height, u):
     best_dir = 'south'
 
     if u[0] > 0:
-        val = grid[u[0] - 1, u[1]]
+        val = grid[u[0] - 1][u[1]]
         if best_value is None or (val is not None and val < best_value):
             best_value = val
             best_dir = 'east'
 
     if u[0] < width - 1:
-        val = grid[u[0] + 1, u[1]]
+        val = grid[u[0] + 1][u[1]]
         if best_value is None or (val is not None and val < best_value):
             best_value = val
             best_dir = 'west'
 
     if u[1] > 0:
-        val = grid[u[0], u[1] - 1]
+        val = grid[u[0]][u[1] - 1]
         if best_value is None or (val is not None and val < best_value):
             best_value = val
             best_dir = 'north'
 
     if u[1] < height - 1:
-        val = grid[u[0], u[1] + 1]
+        val = grid[u[0]][u[1] + 1]
         if best_value is None or (val is not None and val < best_value):
             best_value = val
             best_dir = 'south'
