@@ -3,15 +3,13 @@ import os
 import heatMap
 import pathing
 
-SNAKE_ID = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
-
-
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
 
 
 def getSnakePosition(data):
+    SNAKE_ID = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
     snakes = data['snakes']
     ourSnake = snakes[SNAKE_ID]
     return ourSnake['coords'][0]
