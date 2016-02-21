@@ -50,7 +50,7 @@ class heatMap:
         y = None
         for i in range(0,self.width):
             for j in range(0,self.height):
-                if self.board[i][j] < min:
+                if self.board[i][j] < min and self.board[i][j] is not None:
                     min = self.board[i][j]
                     x = i
                     y = j
