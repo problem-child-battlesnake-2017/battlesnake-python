@@ -54,6 +54,7 @@ def move():
     data = bottle.request.json
 
     print type(data)
+    global ourHeatMap
     goal = ourHeatMap.getGoal()
     board = ourHeatMap.getHeatMap(data)
     position = getSnakePosition(data)
