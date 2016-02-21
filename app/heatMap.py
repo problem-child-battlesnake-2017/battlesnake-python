@@ -42,7 +42,7 @@ class heatMap:
 
 
     def fillHeatMap(self, data):
-        self.fillSnakes(data)
+        self.fillSnakes(data['snakes'])
         self.fillBorder()
 
     def getGoal(self):
