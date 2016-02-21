@@ -15,12 +15,11 @@ class heatMap:
                 self.board[x][y] = None
                 self.fillRadius(x, y, 1, self.aroundSnake)
 
-            if "food" in ourSnake and "food" in snake:
-                if ourSnake["food"] > snake["food"]:
-                    print "Go for the head"
-                    x = coordinates[0][0]
-                    y = coordinates[0][1]
-                    self.board[x][y] = 0
+            if len(ourSnake["coords"]) > len(snake["coords"]):
+                print "Go for the head"
+                x = coordinates[0][0]
+                y = coordinates[0][1]
+                self.board[x][y] = 0
 
     def fillRadius(self, x, y, radius, radiusAmount):
         radius -= 1
