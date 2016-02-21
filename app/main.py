@@ -34,7 +34,7 @@ def index():
 
 @bottle.post('/start')
 def start():
-    data = json.loads(bottle.request.json)
+    data = bottle.request.json
     height = data["height"]
     width = data["width"]
 
@@ -51,7 +51,7 @@ def start():
 
 @bottle.post('/move')
 def move():
-    data = json.loads(bottle.request.json)
+    data = bottle.request.json
 
     print type(data)
     goal = ourHeatMap.getGoal()
