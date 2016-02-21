@@ -10,8 +10,13 @@ def static(path):
 
 def getSnakePosition(data):
     SNAKE_ID = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
+    ourSnake = None
     snakes = data['snakes']
-    ourSnake = snakes[SNAKE_ID]
+    for snake in snakes:
+        if snake["id"] == SNAKE_ID:
+            ourSnake = snake
+            break
+
     return ourSnake['coords'][0]
 
 
