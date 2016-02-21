@@ -1,11 +1,11 @@
 import bottle
 import os
-import heatMap as heat
+import heatMap
 import pathing
 
 
 
-global heatMap
+global ourHeatMap
 global snakeId
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -34,7 +34,9 @@ def start():
     data = bottle.request.json
     height = data["height"]
     width = data["width"]
-    heatMap = heat.heatMap(width, height)
+
+    global ourHeatMap
+    ourHeatMap = heatMap.heatMap(width, height)
     snakeId = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
 
     # TODO: Do things with data
@@ -47,8 +49,10 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    goal = heatMap.getGoal()
-    board = heatMap.getHeatMap(data)
+
+    global ourHeatMap
+    goal = ourHeatMap.getGoal()
+    board = ourHeatMap.getHeatMap(data)
     position = getSnakePosition(data)
 
     direction = pathing.find_path_direction(board, board.width, board.height, position, goal)
