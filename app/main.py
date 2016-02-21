@@ -60,6 +60,10 @@ def move():
 
     taunts = [
         'That\'s not a good to get a head',
+        'Donut be angry',
+        'I had a pizza joint once. It didn\'t pan out',
+        'Don\'t call me later.  Call me dad.',
+        'What time is it? I don\'t know, it keeps changing.',
 
     ]
 
