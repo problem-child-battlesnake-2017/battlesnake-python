@@ -55,7 +55,7 @@ def move():
     board = ourHeatMap.getHeatMap(data)
     goal = ourHeatMap.getGoal()
     position = getSnakePosition(data)
-    board[position[0], position[1]] = 1
+    board[position[0]][position[1]] = 1
 
     direction = pathing.find_path_direction(board, width, height, position, goal)
     print board
