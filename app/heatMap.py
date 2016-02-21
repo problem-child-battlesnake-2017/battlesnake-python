@@ -1,7 +1,6 @@
 class heatMap:
-
     def __init__(self, width, height):
-        self.goal = [1,1]
+        self.goal = [1, 1]
         self.aroundSnake = 5
         self.width = width
         self.height = height
@@ -14,17 +13,19 @@ class heatMap:
                 x = cord[0]
                 y = cord[1]
                 self.board[x][y] = None
-                self.fillRadius(x,y,1,self.aroundSnake)
-            print ourSnake
-            if ourSnake["food"] > snake["food"]:
-                x = coordinates[0][0]
-                y = coordinates[0][1]
-                self.board[x][y] = 0
+                self.fillRadius(x, y, 1, self.aroundSnake)
 
+            if "food" in ourSnake and "food" in snake:
+                if ourSnake["food"] > snake["food"]:
+                    print "Go for the head"
+                    x = coordinates[0][0]
+                    y = coordinates[0][1]
+                    self.board[x][y] = 0
 
     def fillRadius(self, x, y, radius, radiusAmount):
         radius -= 1
-        coordinates = [[x-1, y], [x+1,y], [x, y+1], [x,y-1], [x+1, y+1], [x+1, y-1], [x-1, y+1], [x-1, y-1]]
+        coordinates = [[x - 1, y], [x + 1, y], [x, y + 1], [x, y - 1], [x + 1, y + 1], [x + 1, y - 1], [x - 1, y + 1],
+                       [x - 1, y - 1]]
         for point in coordinates:
             xx = point[0]
             yy = point[1]
@@ -34,11 +35,10 @@ class heatMap:
                 continue
 
             if (self.board[xx][yy]) != None:
-                        self.board[xx][yy] = radiusAmount
+                self.board[xx][yy] = radiusAmount
         if radius > 0:
             for point in coordinates:
                 self.fillRadius(point[0], point[1], radius, radiusAmount)
-
 
     def fillHeatMap(self, data, ourSnake):
         self.fillSnakes(data['snakes'], ourSnake)
@@ -52,13 +52,13 @@ class heatMap:
         min = 10000
         x = None
         y = None
-        for i in range(0,self.width):
-            for j in range(0,self.height):
+        for i in range(0, self.width):
+            for j in range(0, self.height):
                 if self.board[i][j] < min and self.board[i][j] is not None:
                     min = self.board[i][j]
                     x = i
                     y = j
-        return [x,y]
+        return [x, y]
 
     def getGoal(self):
         return self.findSmallestCoordinate()
