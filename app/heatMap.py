@@ -15,6 +15,7 @@ class heatMap:
                 y = cord[1]
                 self.board[x][y] = None
                 self.fillRadius(x,y,1,self.aroundSnake)
+            print ourSnake
             if ourSnake["food"] > snake["food"]:
                 x = coordinates[0][0]
                 y = coordinates[0][1]
