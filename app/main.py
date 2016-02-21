@@ -33,14 +33,14 @@ def getSnakePosition(data):
 
 @bottle.get('/')
 def index():
-    head_url = '%s://%s/static/head.png' % (
+    head_url = '%s://%s/static/dad.jpg' % (
         bottle.request.urlparts.scheme,
         bottle.request.urlparts.netloc
     )
 
     return {
         'color': '#00ff00',
-        'head': "http://ficmedia.fichub.com/Fox_uk_uk/character/96241.281x308.jpg"
+        'head': head_url
     }
 
 
