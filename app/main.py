@@ -2,19 +2,22 @@ import bottle
 import os
 import heatMap
 import pathing
-
-
+import json
 
 global ourHeatMap
 global snakeId
+
+
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
+
 
 def getSnakePosition(data):
     snakes = data['snakes']
     ourSnake = snakes[snakeId]
     return ourSnake['coords'][0]
+
 
 @bottle.get('/')
 def index():
@@ -31,7 +34,7 @@ def index():
 
 @bottle.post('/start')
 def start():
-    data = bottle.request.json
+    data = json.loads(bottle.request.json)
     height = data["height"]
     width = data["width"]
 
@@ -48,8 +51,9 @@ def start():
 
 @bottle.post('/move')
 def move():
-    data = bottle.request.json
+    data = json.loads(bottle.request.json)
 
+    print type(data)
     goal = ourHeatMap.getGoal()
     board = ourHeatMap.getHeatMap(data)
     position = getSnakePosition(data)
