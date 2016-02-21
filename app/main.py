@@ -7,6 +7,16 @@ import pathing
 def static(path):
     return bottle.static_file(path, root='static/')
 
+def getOurSnake(data):
+    SNAKE_ID = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
+    ourSnake = None
+    snakes = data['snakes']
+    for snake in snakes:
+        if snake["id"] == SNAKE_ID:
+            ourSnake = snake
+            break
+
+    return ourSnake
 
 def getSnakePosition(data):
     SNAKE_ID = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
@@ -52,7 +62,7 @@ def move():
     width = data["width"]
 
     ourHeatMap = heatMap.heatMap(width, height)
-    board = ourHeatMap.getHeatMap(data)
+    board = ourHeatMap.getHeatMap(data, getOurSnake(data))
     goal = ourHeatMap.getGoal()
     position = getSnakePosition(data)
     board[position[0]][position[1]] = 1000000
