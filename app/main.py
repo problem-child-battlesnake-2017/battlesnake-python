@@ -38,6 +38,7 @@ def start():
     height = data["height"]
     width = data["width"]
 
+    global ourHeatMap
     ourHeatMap = heatMap.heatMap(width, height)
 
     # TODO: Do things with data
@@ -51,6 +52,7 @@ def start():
 def move():
     data = bottle.request.json
 
+    global ourHeatMap
     #define characteristics from heat map
     board = ourHeatMap.getHeatMap(data)
     goal = ourHeatMap.getGoal()
