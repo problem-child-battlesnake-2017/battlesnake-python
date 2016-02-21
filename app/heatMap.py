@@ -35,15 +35,15 @@ class heatMap:
     def fillBorder(self):
         for i in range(0, self.width):
             self.board[i][0] = None
-            self.board[i][self.height] = None
+            self.board[i][self.height-1] = None
         for i in range(0, self.height):
             self.board[0][i] = None
-            self.board[self.width][i] = None
+            self.board[self.width-1][i] = None
 
 
     def fillHeatMap(self, data):
         self.fillSnakes(data['snakes'])
-        self.fillBorder()
+        #self.fillBorder()
 
     def getGoal(self):
         return self.goal
