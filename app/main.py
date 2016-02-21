@@ -40,7 +40,7 @@ def index():
 
     return {
         'color': '#00ff00',
-        'head': head_url
+        'head': "http://ficmedia.fichub.com/Fox_uk_uk/character/96241.281x308.jpg"
     }
 
 
