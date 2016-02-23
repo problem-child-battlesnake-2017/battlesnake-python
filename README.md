@@ -1,4 +1,22 @@
-# battlesnake-python
+# BattleSnake 2016 - Terrible Dad Snake AI
+
+# Conceived and developed by:
+* AJ Po-Deziel
+* Brook Jensen
+* Cameron Wilson
+* Charlie Friend
+* Shae Brown
+
+
+Utilizing Heroku for deployment, the snake AI built is, in essence, a web service that implements the BattleSnake API (view original fork readme below). Responding to JSON formatted HTTP requests and responses, the AI competes with other snakes on a fixed size game board for survival - resembling the old cell phone games of Snake. 
+
+Our AI competed in the Classic Division, and had to collect food while maintaining its health to prevent starvation. However, the snake's length grows with every food item collected - making its movement more complicated with each passing turn.
+
+Terrible Dad. a nod to great yet terrible dad jokes, features them in spades as it taunts other snakes with every turn it makes!
+ 
+
+
+# ORIGINAL FORK README by sendwithus - battlesnake-python
 
 A simple [BattleSnake AI](http://battlesnake.io) written in Python. 
 
