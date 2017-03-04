@@ -52,7 +52,7 @@ class heatMap:
     def fillFood(self, data, position):
         max_distance = 20
         for food in data:
-            self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], self.distance(position, food) / max_distance)
+            self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], 1)#self.distance(position, food) / max_distance)
 
     def getGoalQueue(self):
         q = Queue.PriorityQueue()
