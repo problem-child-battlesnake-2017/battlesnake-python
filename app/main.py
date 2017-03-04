@@ -56,11 +56,13 @@ def getGoal(data, position, width, height):
     visited = [[False for x in range(width)] for x in range(height)]
     goal = Q.get()
     while not pathing.is_path(dfs_grid, visited, position, [goal[1], goal[2]], width, height):
+        print("Is no path here")
         if Q.empty():
             print("PANIC")
             return goal
         goal = Q.get()
     return goal
+
 
 @bottle.post('/move')
 def move():

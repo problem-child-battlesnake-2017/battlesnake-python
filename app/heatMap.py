@@ -1,4 +1,5 @@
 import Queue
+import math
 
 class heatMap:
     def __init__(self, width, height):
@@ -35,7 +36,7 @@ class heatMap:
             if yy < 0 or yy >= self.height:
                 continue
 
-            if (self.board[xx][yy]) != None:
+            if (self.board[xx][yy]) is not None:
                 self.board[xx][yy] = radiusAmount
         if radius > 0:
             for point in coordinates:
@@ -45,9 +46,13 @@ class heatMap:
         self.fillSnakes(data['snakes'], ourSnake)
         self.fillFood(data['food'])
 
-    def fillFood(self, data):
+    def distance(self, start, end):
+        return math.sqrt(pow(start[0] - end[0], 2) + pow(start[1] - end[1]))
+
+    def fillFood(self, data, position):
+        max_distance = 20
         for food in data:
-            self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], 1)
+            self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], self.distance(position, food) / max_distance)
 
     def getGoalQueue(self):
         q = Queue()
