@@ -1,3 +1,5 @@
+import Queue
+
 class heatMap:
     def __init__(self, width, height):
         self.goal = [1, 1]
@@ -47,20 +49,13 @@ class heatMap:
         for food in data:
             self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], 1)
 
-    def findSmallestCoordinate(self):
-        min = 10000
-        x = None
-        y = None
+    def getGoalQueue(self):
+        q = Queue()
         for i in range(0, self.width):
             for j in range(0, self.height):
-                if self.board[i][j] < min and self.board[i][j] is not None:
-                    min = self.board[i][j]
-                    x = i
-                    y = j
-        return [x, y]
-
-    def getGoal(self):
-        return self.findSmallestCoordinate()
+                if self.board[i][j] is not None:
+                    q.put((self.board[i][j], i, j))
+        return q
 
     def getHeatMap(self, data, ourSnake):
         self.fillHeatMap(data, ourSnake)

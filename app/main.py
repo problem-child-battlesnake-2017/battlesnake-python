@@ -3,6 +3,7 @@ import os
 import heatMap
 import pathing
 import random
+import Queue
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -27,7 +28,6 @@ def getSnakePosition(data):
         if snake["id"] == SNAKE_ID:
             ourSnake = snake
             break
-
     return ourSnake['coords'][0]
 
 
@@ -55,6 +55,18 @@ def start():
     }
 
 
+def getGoal(data, position, width, height):
+    Q = heatMap.getGoalQueue()
+    dfs_grid = pathing.make_dfs_grid(data, width, height)
+    visited = [[False for x in range(width)] for x in range(height)]
+    goal = Q.get()
+    while not pathing.is_path(dfs_grid, visited, position, [goal[1], goal[2]], width, height):
+        if Q.empty():
+            print("PANIC")
+            return goal
+        goal = Q.get()
+    return goal
+
 @bottle.post('/move')
 def move():
 
@@ -74,8 +86,8 @@ def move():
 
     ourHeatMap = heatMap.heatMap(width, height)
     board = ourHeatMap.getHeatMap(data, getOurSnake(data))
-    goal = ourHeatMap.getGoal()
     position = getSnakePosition(data)
+    goal = getGoal(data, position, width, height)
     board[position[0]][position[1]] = 1000000
 
     direction = pathing.find_path_direction(board, width, height, position, goal)

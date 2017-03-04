@@ -3,6 +3,34 @@ def make_grid(width, height, value):
     return [[value for x in range(width)] for x in range(height)]
 
 
+def make_dfs_grid(data, width, height):
+    grid = [[False for x in range(width)] for x in range(height)]
+    for snake in data["snakes"]:
+        for cord in snake["coords"]:
+            grid[cord[0]][cord[1]] = True
+    return grid
+
+
+def is_path(snake_grid, visited, start, end, width, height):
+    if start == end:
+        return True
+    visited[start[0]][start[1]] = True
+    neighbours = [[start[0] + 1][start[1]], [start[0] - 1][start[1]], [start[0]], [start[1] + 1],
+                  [start[0], start[1] - 1]]
+    for point in neighbours:
+        if point_valid(point, visited, width, height):
+            return is_path(snake_grid, visited, point, end, width, height)
+    return False
+
+
+def point_valid(snake_grid, visited, point, width, height):
+    if point[0] < 0 or point[0] >= width or point[1] < 0 or point[1] >= height:
+        return False
+    if visited[point[0]][point[1]]:
+        return False
+    return not snake_grid[point[0]][point[1]]
+
+
 def next_point(Q, dist):
     min_dist = None
     min_point = None
