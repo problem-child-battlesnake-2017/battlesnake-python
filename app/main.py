@@ -57,7 +57,7 @@ def start():
         "tail_type": "pixel"
     }
 
-def getGoal(data, position, width, height):
+def getGoal(heatMap, data, position, width, height):
     Q = heatMap.getGoalQueue()
     dfs_grid = pathing.make_dfs_grid(data, width, height)
     visited = [[False for x in range(width)] for x in range(height)]
@@ -91,7 +91,7 @@ def move():
     ourHeatMap = heatMap.heatMap(width, height)
     board = ourHeatMap.getHeatMap(data, getOurSnake(data))
     position = getSnakePosition(data)
-    goal = getGoal(data, position, width, height)
+    goal = getGoal(ourHeatMap, data, position, width, height)
     board[position[0]][position[1]] = 1000000
 
     direction = pathing.find_path_direction(board, width, height, position, goal)
