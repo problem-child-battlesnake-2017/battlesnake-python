@@ -58,7 +58,7 @@ class heatMap:
 
         for snake in data['snakes']:
             if snake['id'] != ourSnake['id']:
-                if self.distance(self, snake['coords'][0], food) < distanceFromFood:
+                if self.distance(self, snake['coords'][0], food) <= distanceFromFood:
                     self.board[food[0]][food[1]] = 10
                     
 
