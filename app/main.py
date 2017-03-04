@@ -10,8 +10,7 @@ def static(path):
 
 def getOurSnake(data):
     SNAKE_ID = data['you']
-    ourSnake = SNAKE_ID
-    return ourSnake
+    return SNAKE_ID
 
 def getSnakePosition(data):
     SNAKE_ID = data['you']
