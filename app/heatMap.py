@@ -47,7 +47,7 @@ class heatMap:
         self.fillFood(data['food'], ourSnake["coords"][0])
 
     def distance(self, start, end):
-        return math.sqrt(pow(start[0] - end[0], 2) + pow(start[1] - end[1]))
+        return math.sqrt(pow(start[0] - end[0], 2) + pow(start[1] - end[1], 2))
 
     def fillFood(self, data, position):
         max_distance = 20
