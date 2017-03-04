@@ -10,18 +10,12 @@ def static(path):
     return bottle.static_file(path, root='static/')
 
 def getOurSnake(data):
-    SNAKE_ID = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
-    ourSnake = None
-    snakes = data['snakes']
-    for snake in snakes:
-        if snake["id"] == SNAKE_ID:
-            ourSnake = snake
-            break
-
+    SNAKE_ID = data['you']
+    ourSnake = SNAKE_ID
     return ourSnake
 
 def getSnakePosition(data):
-    SNAKE_ID = "6f8ded38-bd5c-41cf-b894-5b2152c1d8bd"
+    SNAKE_ID = data['you']
     ourSnake = None
     snakes = data['snakes']
     for snake in snakes:
@@ -40,7 +34,8 @@ def index():
 
     return {
         'color': '#00ff00',
-        'head': head_url
+        'head_type': 'sand-worm',
+        'tail_type': 'pixel'
     }
 
 

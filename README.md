@@ -1,6 +1,7 @@
-# BattleSnake 2016 - Terrible Dad Snake AI
+# BattleSnake 2017 - Problem Child Snake AI
+Originally conceived during BattleSnake 2016, and now updated for 2017!
 
-# Conceived and developed by:
+# Originally conceived and developed by this crack team!
 * AJ Po-Deziel
 * Brook Jensen
 * Cameron Wilson
@@ -10,9 +11,9 @@
 
 Utilizing Heroku for deployment, the snake AI built is, in essence, a web service that implements the BattleSnake API (view original fork readme below). Responding to JSON formatted HTTP requests and responses, the AI competes with other snakes on a fixed size game board for survival - resembling the old cell phone games of Snake. 
 
-Our AI competed in the Classic Division, and had to collect food while maintaining its health to prevent starvation. However, the snake's length grows with every food item collected - making its movement more complicated with each passing turn.
+This AI competed in the Advanced division, and had to collect food while maintaining its health to prevent starvation. However, the snake's length grows with every food item collected - making its movement more complicated with each passing turn.
 
-Terrible Dad. a nod to great yet terrible dad jokes, features them in spades as it taunts other snakes with every turn it makes!
+Problem Child is the sequel to our original snake, Terrible Dad which was a nod to great yet terrible dad jokes! Problem Child in 2017, like Terrible Dad before it, features many jokes in spades as it taunts other snakes with every turn it makes!
  
 
 
