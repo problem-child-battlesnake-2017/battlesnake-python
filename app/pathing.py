@@ -129,13 +129,13 @@ def find_path_direction(grid, width, height, start, end):
         return find_best_adjacent(grid, width, height, start)
 
     if next_point[0] > start[0]:
-        return 'east'
+        return 'right'
     if next_point[0] < start[0]:
-        return 'west'
+        return 'left'
     if next_point[1] < start[1]:
-        return 'north'
+        return 'up'
     if next_point[1] > start[1]:
-        return 'south'
+        return 'down'
 
 
 def find_paths(grid, width, height, start):
