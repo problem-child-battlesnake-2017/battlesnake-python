@@ -69,6 +69,7 @@ class heatMap:
             distance = self.distance(position, food)
             val = int(round((distance / max_distance) * 2))
             self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], val)
+            self.checkForOtherSnakes(data, ourSnake, food, distance)
 
 
     def getGoalQueue(self):
