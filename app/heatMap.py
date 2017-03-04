@@ -18,7 +18,7 @@ class heatMap:
                 self.board[x][y] = None
                 self.fillRadius(x, y, 1, self.aroundSnake)
 
-            if len(ourSnake["coords"]) > len(snake["coords"]):
+            if len(ourSnake["coords"]) > len(coordinates):
                 print "Go for the head"
                 x = coordinates[0][0]
                 y = coordinates[0][1]

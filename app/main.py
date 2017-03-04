@@ -11,8 +11,10 @@ def static(path):
 
 def getOurSnake(data):
     SNAKE_ID = data['you']
-    ourSnake = SNAKE_ID
-    return ourSnake
+    for snake in data["snakes"]:
+        if snake["id"] == SNAKE_ID:
+            return snake
+    return None
 
 def getSnakePosition(data):
     SNAKE_ID = data['you']
