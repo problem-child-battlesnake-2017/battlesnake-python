@@ -14,6 +14,7 @@ def make_dfs_grid(data, width, height):
 def is_path(snake_grid, visited, start, end, width, height):
     if start == end:
         return True
+    is_path = False
     visited[start[0]][start[1]] = True
     neighbours = [
         [start[0] + 1, start[1]],
@@ -22,8 +23,9 @@ def is_path(snake_grid, visited, start, end, width, height):
         [start[0], start[1] - 1]]
     for point in neighbours:
         if point_valid(snake_grid, visited, point, width, height):
-            return is_path(snake_grid, visited, point, end, width, height)
-    return False
+            if is_path(snake_grid, visited, point, end, width, height):
+                is_path = True
+    return is_path
 
 
 def point_valid(snake_grid, visited, point, width, height):

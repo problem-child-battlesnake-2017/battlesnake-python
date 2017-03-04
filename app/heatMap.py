@@ -4,10 +4,10 @@ import math
 class heatMap:
     def __init__(self, width, height):
         self.goal = [1, 1]
-        self.aroundSnake = 5
+        self.aroundSnake = 25
         self.width = width
         self.height = height
-        self.board = [[2 for x in range(self.width)] for x in range(self.height)]
+        self.board = [[10 for x in range(self.width)] for x in range(self.height)]
 
     def fillSnakes(self, data, ourSnake):
         for snake in data:
@@ -44,15 +44,19 @@ class heatMap:
 
     def fillHeatMap(self, data, ourSnake):
         self.fillSnakes(data['snakes'], ourSnake)
-        self.fillFood(data['food'], ourSnake["coords"][0])
+        self.fillFood(data['food'], ourSnake)
 
     def distance(self, start, end):
         return math.sqrt(pow(start[0] - end[0], 2) + pow(start[1] - end[1], 2))
 
-    def fillFood(self, data, position):
-        max_distance = 20
+    def fillFood(self, data, ourSnake):
+        position = ourSnake["coords"][0]
+        max_distance = math.sqrt(pow(self.width, 2), pow(self.height), 2)
         for food in data:
-            self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], 1)#self.distance(position, food) / max_distance)
+            distance = self.distance(position, food)
+            val = int(round((distance / max_distance) * 2))
+            self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], val)
+
 
     def getGoalQueue(self):
         q = Queue.PriorityQueue()

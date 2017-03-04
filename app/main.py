@@ -62,12 +62,12 @@ def getGoal(heatMap, data, position, width, height):
     dfs_grid = pathing.make_dfs_grid(data, width, height)
     visited = [[False for x in range(width)] for x in range(height)]
     goal = Q.get()
-    # while not pathing.is_path(dfs_grid, visited, position, [goal[1], goal[2]], width, height):
-    #     print("Is no path here")
-    #     if Q.empty():
-    #         print("PANIC")
-    #         return goal
-    #     goal = Q.get()
+    while not pathing.is_path(dfs_grid, visited, position, [goal[1], goal[2]], width, height):
+        print("Is no path here")
+        if Q.empty():
+            print("PANIC")
+            return goal
+        goal = Q.get()
     return [goal[1], goal[2]]
 
 @bottle.post('/move')
