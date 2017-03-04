@@ -15,10 +15,10 @@ def is_path(snake_grid, visited, start, end, width, height):
     if start == end:
         return True
     visited[start[0]][start[1]] = True
-    neighbours = [[start[0] + 1][start[1]], [start[0] - 1][start[1]], [start[0]], [start[1] + 1],
+    neighbours = [[start[0] + 1, start[1]], [start[0] - 1, start[1]], [start[0]], [start[1] + 1],
                   [start[0], start[1] - 1]]
     for point in neighbours:
-        if point_valid(point, visited, width, height):
+        if point_valid(snake_grid, visited, point, width, height):
             return is_path(snake_grid, visited, point, end, width, height)
     return False
 
