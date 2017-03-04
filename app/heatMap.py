@@ -44,7 +44,7 @@ class heatMap:
 
     def fillHeatMap(self, data, ourSnake):
         self.fillSnakes(data['snakes'], ourSnake)
-        self.fillFood(data['food'])
+        self.fillFood(data['food'], ourSnake["coords"][0])
 
     def distance(self, start, end):
         return math.sqrt(pow(start[0] - end[0], 2) + pow(start[1] - end[1]))
