@@ -50,7 +50,7 @@ def start():
         "secondary_color": "#00FF00",
        # "head_url": "",
         "name": "Problem Child",
-        "taunt": "I always get what I want, or I whine."
+        "taunt": "I always get what I want, or I whine.",
         "head_type": "pixel",
         "tail_type": "pixel"
     }
