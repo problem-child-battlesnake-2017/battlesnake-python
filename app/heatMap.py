@@ -55,7 +55,7 @@ class heatMap:
             self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], self.distance(position, food) / max_distance)
 
     def getGoalQueue(self):
-        q = Queue()
+        q = Queue.PriorityQueue()
         for i in range(0, self.width):
             for j in range(0, self.height):
                 if self.board[i][j] is not None:
