@@ -46,9 +46,14 @@ def start():
     # TODO: Do things with data
 
     return {
-        'taunt': ""
+        "color": "#00ff00",
+        "secondary_color": "#00FF00",
+       # "head_url": "",
+        "name": "Problem Child",
+        "taunt": "I always get what I want, or I whine.",
+        "head_type": "pixel",
+        "tail_type": "pixel"
     }
-
 
 def getGoal(data, position, width, height):
     Q = heatMap.getGoalQueue()
@@ -63,11 +68,11 @@ def getGoal(data, position, width, height):
         goal = Q.get()
     return goal
 
-
 @bottle.post('/move')
 def move():
 
     taunts = [
+        'I\'m telling mom!',
         'That\'s not a good to get a head',
         'Donut be angry',
         'I had a pizza joint once. It didn\'t pan out',
