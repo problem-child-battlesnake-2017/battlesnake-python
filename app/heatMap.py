@@ -48,6 +48,19 @@ class heatMap:
 
     def distance(self, start, end):
         return math.sqrt(pow(start[0] - end[0], 2) + pow(start[1] - end[1], 2))
+    
+    def checkForOtherSnakes(self, data, ourSnake, food, distanceFromFood):
+
+        '''
+        Adjust the priority of the food location if there is another snake head close to it.
+
+        '''
+
+        for snake in data['snakes']:
+            if snake['id'] != ourSnake['id']:
+                if self.distance(self, snake['coords'][0], food) < distanceFromFood:
+                    self.board[food[0]][food[1]] = 10
+                    
 
     def fillFood(self, data, position):
         max_distance = 20
