@@ -93,31 +93,31 @@ def find_path(grid, width, height, start, end):
 
 def find_best_adjacent(grid, width, height, u):
     best_value = None
-    best_dir = 'south'
+    best_dir = 'down'
 
     if u[0] > 0:
         val = grid[u[0] - 1][u[1]]
         if best_value is None or (val is not None and val < best_value):
             best_value = val
-            best_dir = 'east'
+            best_dir = 'right'
 
     if u[0] < width - 1:
         val = grid[u[0] + 1][u[1]]
         if best_value is None or (val is not None and val < best_value):
             best_value = val
-            best_dir = 'west'
+            best_dir = 'left'
 
     if u[1] > 0:
         val = grid[u[0]][u[1] - 1]
         if best_value is None or (val is not None and val < best_value):
             best_value = val
-            best_dir = 'north'
+            best_dir = 'up'
 
     if u[1] < height - 1:
         val = grid[u[0]][u[1] + 1]
         if best_value is None or (val is not None and val < best_value):
             best_value = val
-            best_dir = 'south'
+            best_dir = 'down'
 
     return best_dir
 
@@ -129,13 +129,13 @@ def find_path_direction(grid, width, height, start, end):
         return find_best_adjacent(grid, width, height, start)
 
     if next_point[0] > start[0]:
-        return 'east'
+        return 'right'
     if next_point[0] < start[0]:
-        return 'west'
+        return 'left'
     if next_point[1] < start[1]:
-        return 'north'
+        return 'up'
     if next_point[1] > start[1]:
-        return 'south'
+        return 'down'
 
 
 def find_paths(grid, width, height, start):
