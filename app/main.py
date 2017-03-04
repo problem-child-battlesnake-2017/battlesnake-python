@@ -34,7 +34,7 @@ def index():
 
     return {
         'color': '#00ff00',
-        'head_type': 'sand-worm'
+        'head_type': 'sand-worm',
         'tail_type': 'pixel'
     }
 
