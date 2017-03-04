@@ -68,7 +68,7 @@ def getGoal(heatMap, data, position, width, height):
     #         print("PANIC")
     #         return goal
     #     goal = Q.get()
-    return goal
+    return [goal[1], goal[2]]
 
 @bottle.post('/move')
 def move():
