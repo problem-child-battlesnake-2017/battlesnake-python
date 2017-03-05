@@ -44,7 +44,8 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-
+    print("width: " + data["width"])
+    print("height: " + data["height"])
     # TODO: Do things with data
 
     return {
