@@ -22,7 +22,7 @@ class heatMap:
                 print "Go for the head"
                 x = coordinates[0][0]
                 y = coordinates[0][1]
-                # self.board[x][y] = 0
+                self.board[x][y] = 0
 
     def fillRadius(self, x, y, radius, radiusAmount):
         radius -= 1
