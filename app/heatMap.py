@@ -71,13 +71,18 @@ class heatMap:
             self.checkForOtherSnakes(data["snakes"], ourSnake, food, distance)
 
 
-    def getGoalQueue(self):
-        q = Queue.PriorityQueue()
+    def getGoal(self):
+        min = 10000
+        x = None
+        y = None
         for i in range(0, self.width):
-            for j in range(0, self.height):
-                if self.board[i][j] is not None:
-                    q.put((self.board[i][j], i, j))
-        return q
+              for j in range(0, self.height):
+                if self.board[i][j] < min and self.board[i][j] is not None:
+                    min = self.board[i][j]
+                    x = i
+                    y = j
+        return [x, y]
+
 
     def getHeatMap(self, data, ourSnake):
         self.fillHeatMap(data, ourSnake)
