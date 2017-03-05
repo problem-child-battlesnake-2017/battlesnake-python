@@ -44,7 +44,7 @@ class heatMap:
 
     def fillHeatMap(self, data, ourSnake):
         self.fillSnakes(data['snakes'], ourSnake)
-        self.fillFood(data['food'], ourSnake)
+        self.fillFood(data, ourSnake)
 
     def distance(self, start, end):
         return math.sqrt(pow(start[0] - end[0], 2) + pow(start[1] - end[1], 2))
@@ -55,7 +55,6 @@ class heatMap:
         Adjust the priority of the food location if there is another snake head close to it.
 
         '''
-
         for snake in data:
             if snake['id'] != ourSnake['id']:
                 if self.distance(self, snake['coords'][0], food) <= distanceFromFood:
@@ -65,11 +64,11 @@ class heatMap:
     def fillFood(self, data, ourSnake):
         position = ourSnake["coords"][0]
         max_distance = math.sqrt(pow(self.width, 2) + pow(self.height, 2))
-        for food in data:
+        for food in data["food"]:
             distance = self.distance(position, food)
             val = int(round((distance / max_distance) * 2))
             self.board[food[0]][food[1]] = min(self.board[food[0]][food[1]], val)
-            self.checkForOtherSnakes(data, ourSnake, food, distance)
+            self.checkForOtherSnakes(data["snakes"], ourSnake, food, distance)
 
 
     def getGoalQueue(self):
