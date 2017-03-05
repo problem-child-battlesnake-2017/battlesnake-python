@@ -47,13 +47,13 @@ def start():
     # TODO: Do things with data
 
     return {
-        "color": "#00ff00",
+        "color": "#7417AB",
         "secondary_color": "#00FF00",
        # "head_url": "",
         "name": "Problem Child",
         "taunt": "I always get what I want, or I whine.",
-        "head_type": "pixel",
-        "tail_type": "pixel"
+        "head_type": "sand-worm",
+        "tail_type": "fat-rattle"
     }
 
 # def getGoal(heatMap, data, position, width, height):
@@ -75,11 +75,12 @@ def move():
 
     taunts = [
         'I\'m telling mom!',
-        'That\'s not a good to get a head',
-        'Donut be angry',
-        'I had a pizza joint once. It didn\'t pan out',
-        'Don\'t call me later.  Call me dad.',
-        'What time is it? I don\'t know, it keeps changing.',
+        'Gimme food now!!!!',
+        'My snake can beat up your snake',
+        'Snek Snek Snek #2017',
+        'Don\'t call me later.  Call me never.',
+        'I always get what I want, or I whine.',
+        'If I don\'t win, I\'m telling on you!'
 
     ]
 
